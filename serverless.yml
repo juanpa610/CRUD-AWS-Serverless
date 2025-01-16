@@ -1,0 +1,46 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: juanja
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: ServerlessUsers
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions:
+  hello:
+    handler: lambdas/handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+  createUserSF:
+    handler: lambdas/createUserSF.handler
+    events:
+      - httpApi:
+          path: /users
+          method: post
+  listUsersSF:
+    handler: lambdas/listUsersSF.handler
+    events:
+      - httpApi:
+          path: /users
+          method: get
+  editUserSF:
+    handler: lambdas/editUserSF.handler
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: put
+  deleteUsersSF:
+    handler: lambdas/deleteUsersSF.handler
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: delete
+  sendEmailSF:
+    handler: lambdas/sendEmailSF.handler
+    events:
+      - httpApi:
+          path: /send-email
+          method: delete
