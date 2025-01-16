@@ -42,5 +42,5 @@ functions:
     handler: lambdas/sendEmailSF.handler
     events:
       - httpApi:
-          path: /send-email
-          method: delete
+          path: /users/send-email
+          method: post
